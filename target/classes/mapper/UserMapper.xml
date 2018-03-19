@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  	
+<mapper namespace="com.zjsm.ctms.dao.UserMapper">
+
+	<!-- 添加用户 -->
+	<insert id="insertUser" parameterType="com.zjsm.ctms.model.User">
+		insert into user (emp_no,emp_pass,type,head_path) 
+		values(#{empNo},#{empPass},#{type},#{headPath})
+	</insert>
+	
+	<!-- 修改用户 -->
+	<update id="updateUser" parameterType="com.zjsm.ctms.model.User">
+		update user set emp_no=#{empNo},emp_pass=#{empPass},type=,#{type},head_path=#{headPath} 
+		where emp_no=#{empNo}
+	</update>
+
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="com.zjsm.ctms.model.User">
+		delete from user where emp_no=#{empNo}
+	</delete>
+	
+	<!-- 根据账号查询用户信息 -->
+	<select id="findUserByNo" parameterType="string" resultType="User">
+		select * from user where emp_no=#{empNo}
+	</select>
+
+	<!-- 查询所有用户信息 -->
+	<select id="findUserAll" parameterType="java.util.ArrayList" resultType="User">
+		select * from user
+	</select>
+
+</mapper>
